@@ -60,3 +60,9 @@ reduder: is simply a function, pure function that receives an input which is the
 flux patern architecture: software is used as a way to make sure that we are able to solve problems in a logical sense and in a organized fashion in this flux pattern which inspired the library redux
 
 action --> dispatcher --> store --> view
+
+reselector: have 2 types:
+the first is called an input selector that doesn't use create selector, and the second type is called an output selector that
+does use input selectorand creates selector to build themselves
+
+- all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
