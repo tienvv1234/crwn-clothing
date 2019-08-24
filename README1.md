@@ -65,4 +65,55 @@ reselector: have 2 types:
 the first is called an input selector that doesn't use create selector, and the second type is called an output selector that
 does use input selectorand creates selector to build themselves
 
-- all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
+-   all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
+
+setting buildpack in heroku: heroku create crwn-clothing-live-test --buildpack https://github.com/mars/create-react-app-buildpack.git
+
+
+using BEM - block element modifier, it's a style of naming your css so that you follow a certain format know as the block element modifier
+
+style component library
+
+# firebase
+- QueryReference, snapshot and security rules
+a Query is a request we make to firestore to give us something from the database.
+
+FireStore returns us two types of objects: reference and snapshot. of these object, they can be either document or collection version
+
+firestore will always return us these object, event if nothing exists at from that query
+
+- a QueryReference object is an object that represents the 'current' place in the database that we are querying
+
+we get them by calling either:
+```
+firestore.doc('/users/:userId');
+firestore.collections('/users/');
+```
+
+the queryReference object does not have the actual data of the collection or document. It instead has properties that tell us details about it, or the method to get the snapshot object which gives us the data we are looking for
+
+DocumentReference vs CollectionReference
+we use documentRef ojbection to perform our CRUD method. the documentRef methods are .set, .get(), .update() and .delete() respectively.
+
+we can also add documents to collections using the collectionRef object using the .add() method
+```
+collectionRef.add({prop})
+```
+
+we get the snapshot object from the referenct object using the .get() method. ie. documentRef.get() or collectionRef.get()
+
+documentRef returns a documentSnapshot object.
+collectionRef return a collectionSnapshot object.
+
+DocumentSnapshot
+
+we get a documentSnapshot object from our documentRef objecgt
+
+the documentSnapshot object allow us to check if a document exists at this query using the .exist() property which return a boolean.
+
+we can also get the actual properties on the object by calling the .data() method, which return us a JSON object of the document
+
+querySnapshot
+we get a querySnapshot object from our collectionRef object. we can check if there are any documents in the collection by calling the .empty() property which returns boolean.
+
+we can get all the document in the collection by calling the .docs property. It returns an array of our documents as documentSnapshot object.
