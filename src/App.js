@@ -11,7 +11,7 @@ import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import CheckoutPage from './pages/checkout/checkout.component';
-import { selectCollectionsForPreview } from './redux/shop/shop.selector';
+import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 class App extends React.Component {
     unsubcribeFromAuth = null;
 
@@ -31,7 +31,7 @@ class App extends React.Component {
             }
             console.log('collectionsArray', collectionsArray);
             setCurrentUser(userAuth);
-            
+
             // add shop collection to firebase
             // addCollectionAndDocument('collections', collectionsArray.map(({title, items}) => ({title, items})))
         });
@@ -56,8 +56,8 @@ class App extends React.Component {
                             this.props.currentUser ? (
                                 <Redirect to='/' />
                             ) : (
-                                <SignInAndSignUpPage />
-                            )
+                                    <SignInAndSignUpPage />
+                                )
                         }
                     />
                 </Switch>

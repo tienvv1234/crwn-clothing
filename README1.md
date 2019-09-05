@@ -65,18 +65,18 @@ reselector: have 2 types:
 the first is called an input selector that doesn't use create selector, and the second type is called an output selector that
 does use input selectorand creates selector to build themselves
 
--   all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
+- all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
 
 setting buildpack in heroku: heroku create crwn-clothing-live-test --buildpack https://github.com/mars/create-react-app-buildpack.git
-
 
 using BEM - block element modifier, it's a style of naming your css so that you follow a certain format know as the block element modifier
 
 style component library
 
 # firebase
+
 - QueryReference, snapshot and security rules
-a Query is a request we make to firestore to give us something from the database.
+  a Query is a request we make to firestore to give us something from the database.
 
 FireStore returns us two types of objects: reference and snapshot. of these object, they can be either document or collection version
 
@@ -85,6 +85,7 @@ firestore will always return us these object, event if nothing exists at from th
 - a QueryReference object is an object that represents the 'current' place in the database that we are querying
 
 we get them by calling either:
+
 ```
 firestore.doc('/users/:userId');
 firestore.collections('/users/');
@@ -96,6 +97,7 @@ DocumentReference vs CollectionReference
 we use documentRef ojbection to perform our CRUD method. the documentRef methods are .set, .get(), .update() and .delete() respectively.
 
 we can also add documents to collections using the collectionRef object using the .add() method
+
 ```
 collectionRef.add({prop})
 ```
@@ -117,3 +119,9 @@ querySnapshot
 we get a querySnapshot object from our collectionRef object. we can check if there are any documents in the collection by calling the .empty() property which returns boolean.
 
 we can get all the document in the collection by calling the .docs property. It returns an array of our documents as documentSnapshot object.
+
+Observables + observer Pattern
+
+redux thunk
+
+write a function that retuns a function that gets dispatch in it so that whenever dispatch is called it will fire multiple action.
