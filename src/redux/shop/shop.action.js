@@ -1,8 +1,8 @@
 import ShopActionTypes from './shop.type';
-import {
-    firestore,
-    convertCollectionsSnapshotToMap
-} from '../../firebase/firebase.utils';
+// import {
+//     firestore,
+//     convertCollectionsSnapshotToMap
+// } from '../../firebase/firebase.utils';
 
 // export const updateCollections = collectionsMap => ({
 //     type: ShopActionTypes.UPDATE_COLLECTIONS,
@@ -24,19 +24,19 @@ export const fetchCollectionsError = errorMessage => ({
 });
 
 // way 2
-export const fetchCollectionsStartAsync = () => async (dispatch, getState) => {
-    try {
-        const collectionRef = firestore.collection('collections');
-        dispatch(fetchCollectionsStart());
+// export const fetchCollectionsStartAsync = () => async (dispatch, getState) => {
+//     try {
+//         const collectionRef = firestore.collection('collections');
+//         dispatch(fetchCollectionsStart());
 
-        const snapshot = await collectionRef.get()
-        const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-        dispatch(fetchCollectionsSuccess(collectionsMap));
+//         const snapshot = await collectionRef.get()
+//         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+//         dispatch(fetchCollectionsSuccess(collectionsMap));
 
-    } catch (error) {
-        dispatch(fetchCollectionsError(error.message))
-    }
-}
+//     } catch (error) {
+//         dispatch(fetchCollectionsError(error.message))
+//     }
+// }
 
 // way 1
 // export const fetchCollectionsStartAsync = () => {

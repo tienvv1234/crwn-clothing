@@ -125,3 +125,12 @@ Observables + observer Pattern
 redux thunk
 
 write a function that retuns a function that gets dispatch in it so that whenever dispatch is called it will fire multiple action.
+
+redux saga:
+it's whole purpose is to run these sagas all concurrently, concurrently meaning it wants to run them all together
+in a way that does not block the execution, imagine if we had multiple sagas that were listening right for different actions that were then
+triggering these other function well we might want our code not to be waiting for each of these functions to finish because in here we know we are going to make our asynchronous request
+we know we are going to query the database if we are waiting for the data is come back we want our application to continue to run, it doesn't need to wait for that request to come back. Because that would be blocking our javascript code
+take every which is this saga effect actually creates a non blocking call in order to not stop our application running either other sagas
+
+- it can determine whether or not to cancel any of the previous league started saga from the other action that come in we can control that because of the yield
