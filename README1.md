@@ -53,6 +53,9 @@ a pure function is something that receives an input and always returns an output
 redux flow
 action -> root reducer --> store --> DOM changes
 
+add middleware flow
+action -> middleware(saga, thunk, logger) -> root reducer --> store --> DOM changes
+
 action: is something that a user does such as clicking on a button or a drop down menu and what happens in redux is as soon as a user clicks on something a button and creates an action
 
 reduder: is simply a function, pure function that receives an input which is the action so the user just clicked on a button and creates an output and this output is the state or the store as we call it in redux which is the entire state of the app. so as it goes through the function the store gets updated and react, because it notices this state change then the DOM changes

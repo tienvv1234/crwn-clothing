@@ -5,9 +5,7 @@ import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import Header from './components/header/header.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth, createUserProfileDocument, addCollectionAndDocument } from './firebase/firebase.utils';
 import { connect } from 'react-redux';
-import { setCurrentUser } from './redux/user/user.action';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import CheckoutPage from './pages/checkout/checkout.component';
@@ -16,25 +14,25 @@ class App extends React.Component {
     unsubcribeFromAuth = null;
 
     componentDidMount() {
-        const { setCurrentUser, collectionsArray } = this.props;
 
-        this.unsubcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-            if (userAuth) {
-                const userRef = await createUserProfileDocument(userAuth);
 
-                userRef.onSnapshot(snapShot => {
-                    setCurrentUser({
-                        id: snapShot.id,
-                        ...snapShot.data()
-                    });
-                });
-            }
-            console.log('collectionsArray', collectionsArray);
-            setCurrentUser(userAuth);
+        // this.unsubcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+        //     if (userAuth) {
+        //         const userRef = await createUserProfileDocument(userAuth);
 
-            // add shop collection to firebase
-            // addCollectionAndDocument('collections', collectionsArray.map(({title, items}) => ({title, items})))
-        });
+        //         userRef.onSnapshot(snapShot => {
+        //             setCurrentUser({
+        //                 id: snapShot.id,
+        //                 ...snapShot.data()
+        //             });
+        //         });
+        //     }
+        //     console.log('collectionsArray', collectionsArray);
+        //     setCurrentUser(userAuth);
+
+        //     // add shop collection to firebase
+        //     // addCollectionAndDocument('collections', collectionsArray.map(({title, items}) => ({title, items})))
+        // });
     }
 
     componentWillUnmount() {
@@ -71,11 +69,6 @@ const mapStateToProps = createStructuredSelector({
     collectionsArray: selectCollectionsForPreview
 });
 
-const mapDispatchToProps = dispatch => ({
-    setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps
 )(App);

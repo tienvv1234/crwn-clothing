@@ -1,6 +1,6 @@
 import { all, call } from 'redux-saga/effects';
 import { fetchCollectionsStart } from './shop/shop.sagas';
-
+import { userSagas } from './user/user.sagas';
 export default function* rootSaga(){
     // here will explain the all function
     // all takes an array of sagas
@@ -19,5 +19,5 @@ export default function* rootSaga(){
     // that they are looking for right and we want to initialize them all at once whenever possible and that's why we use the all effect
 
 
-    yield all([call(fetchCollectionsStart)])
+    yield all([call(fetchCollectionsStart), call(userSagas)]);
 }
