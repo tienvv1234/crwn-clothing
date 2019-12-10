@@ -68,7 +68,7 @@ reselector: have 2 types:
 the first is called an input selector that doesn't use create selector, and the second type is called an output selector that
 does use input selectorand creates selector to build themselves
 
-- all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
+-   all an input selector is it is a function that usually take this naming structure of select, that gets the whole state and just returns a slice of it one layer
 
 setting buildpack in heroku: heroku create crwn-clothing-live-test --buildpack https://github.com/mars/create-react-app-buildpack.git
 
@@ -78,14 +78,14 @@ style component library
 
 # firebase
 
-- QueryReference, snapshot and security rules
-  a Query is a request we make to firestore to give us something from the database.
+-   QueryReference, snapshot and security rules
+    a Query is a request we make to firestore to give us something from the database.
 
 FireStore returns us two types of objects: reference and snapshot. of these object, they can be either document or collection version
 
 firestore will always return us these object, event if nothing exists at from that query
 
-- a QueryReference object is an object that represents the 'current' place in the database that we are querying
+-   a QueryReference object is an object that represents the 'current' place in the database that we are querying
 
 we get them by calling either:
 
@@ -136,4 +136,64 @@ triggering these other function well we might want our code not to be waiting fo
 we know we are going to query the database if we are waiting for the data is come back we want our application to continue to run, it doesn't need to wait for that request to come back. Because that would be blocking our javascript code
 take every which is this saga effect actually creates a non blocking call in order to not stop our application running either other sagas
 
-- it can determine whether or not to cancel any of the previous league started saga from the other action that come in we can control that because of the yield
+-   it can determine whether or not to cancel any of the previous league started saga from the other action that come in we can control that because of the yield
+
+## Hook
+
+### UseState
+
+-   Hook is a way for us to write functional component
+-   we can not use hook inside of class component
+-   react version 16.8 or higher
+
+-   useState it allows are functional components to have access to internal state features that we could only leverage before using class component and the way that you state works is that it is a function that gets a parameter
+
+-   when set parameter is update the component re-render like setState
+
+### UseEffect
+
+-   the ability to fire side effects inside of our functional component
+-   this is a function that gets called when ever the component changes or whenever the component updates and re-renders
+-   UseEffect can not call in a conditional like if else
+
+### Hook Cheat Sheet
+
+A quick recap of what we have learned about useEffect:
+
+ComponentDidMount
+
+//Class
+componentDidMount() {
+console.log('I just mounted!');
+}
+
+//Hooks
+useEffect(() => {
+console.log('I just mounted!');
+}, [])
+
+ComponentWillUnmount
+
+//Class
+componentWillUnmount() {
+console.log('I am unmounting');
+}
+
+//Hooks
+useEffect(() => {
+return () => console.log('I am unmounting');
+}, [])
+
+ComponentWillReceiveProps
+
+//Class
+componentWillReceiveProps(nextProps) {
+if (nextProps.count !== this.props.count) {
+console.log('count changed', nextProps.count);
+}
+}
+
+//Hooks
+useEffect(() => {
+console.log('count changed', props.count);
+}, [props.count])
