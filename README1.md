@@ -197,3 +197,9 @@ console.log('count changed', nextProps.count);
 useEffect(() => {
 console.log('count changed', props.count);
 }, [props.count])
+
+### useReducer
+
+-   give us two thing are state and dispatch, and two paramater are reducer itself and initial state value
+
+`const [state, dispatch] = useReducer(reducer, INITIAL_STATE);`

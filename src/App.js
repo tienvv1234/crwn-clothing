@@ -9,7 +9,6 @@ import { connect } from 'react-redux';
 import { selectCurrentUser } from './redux/user/user.selectors';
 import { createStructuredSelector } from 'reselect';
 import CheckoutPage from './pages/checkout/checkout.component';
-import { selectCollectionsForPreview } from './redux/shop/shop.selectors';
 import { checkUserSession } from './redux/user/user.action'
 
 const App = ({ checkUserSession, currentUser }) => {
@@ -43,8 +42,7 @@ const App = ({ checkUserSession, currentUser }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-    currentUser: selectCurrentUser,
-    collectionsArray: selectCollectionsForPreview
+    currentUser: selectCurrentUser
 });
 
 const mapDispatchToProps = dispatch => ({
