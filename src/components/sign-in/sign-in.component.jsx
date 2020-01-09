@@ -5,7 +5,8 @@ import CustomButton from '../custom-button/custom-button.component';
 // import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
 import {
     googleSignInStart,
-    emailSignInStart
+    // emailSignInStart,
+    cognitoSignInStart,
 } from '../../redux/user/user.action';
 import './sign-in.styles.scss';
 
@@ -21,9 +22,11 @@ class Signin extends React.Component {
 
     handleSubmit = async event => {
         event.preventDefault();
-        const { emailSignInStart } = this.props;
+        // const { emailSignInStart } = this.props;
+        const { cognitoSignInStart } = this.props;
         const { email, password } = this.state;
-        emailSignInStart(email, password);
+        // emailSignInStart(email, password);
+        cognitoSignInStart(email, password);
     };
 
     handleChange = event => {
@@ -73,8 +76,10 @@ class Signin extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
     googleSignInStart: () => dispatch(googleSignInStart()),
-    emailSignInStart: (email, password) =>
-        dispatch(emailSignInStart({ email, password }))
+    // emailSignInStart: (email, password) =>
+    //     dispatch(emailSignInStart({ email, password }))
+    cognitoSignInStart: (email, password) =>
+        dispatch(cognitoSignInStart({ email, password }))
 });
 
 export default connect(null, mapDispatchToProps)(Signin);

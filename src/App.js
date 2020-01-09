@@ -16,6 +16,7 @@ class App extends React.Component {
 
     componentDidMount() {
         const { checkUserSession } = this.props;
+
         checkUserSession();
         // this.unsubcribeFromAuth = auth.onAuthStateChanged(async userAuth => {
         //     if (userAuth) {

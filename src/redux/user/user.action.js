@@ -50,3 +50,18 @@ export const signUpFailure = error => ({
     type: UserActionTypes.SIGN_UP_FAILURE,
     payload: error
 })
+
+export const cognitoSignInStart = emailAndPassword => ({
+    type: UserActionTypes.COGNITO_SIGN_IN_START,
+    payload: emailAndPassword
+})
+
+export const cognitoSignInSuccess = (user) => ({
+    type: UserActionTypes.COGNITO_SIGN_IN_SUCCESS,
+    payload: user
+})
+
+export const cognitoSignInFailure = error => ({
+    type: UserActionTypes.COGNITO_SIGN_IN_FAILURE,
+    payload: error
+})
